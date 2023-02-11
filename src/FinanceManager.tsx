@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Guest() {
+function FinanceManager() {
 
     const [reimbursements, setReimbursements] = useState<{ 
         reimbursement_id: string, 
@@ -94,4 +94,4 @@ function Guest() {
     )
 }
 
-export default Guest;
+export default FinanceManager;
