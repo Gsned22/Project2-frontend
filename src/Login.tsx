@@ -27,12 +27,12 @@ function Login() {
             alert(message);
 
             const payload: { iat: number, role: string, username: string } = jwtDecode(token); // extracts the payload of the token
-            if (payload.role === 'employee') {
-                // redirect to /employee route
-                return navigate("/employee");
-            } else if (payload.role === 'finance_manager') {
-                // redirect to /financemanager route
-                return navigate("/financemanager");
+            if (payload.role === 'user') {
+                // redirect to /user route
+                return navigate("/user");
+            } else if (payload.role === 'guest') {
+                // redirect to /guest route
+                return navigate("/guest");
             }
         }
     }
@@ -41,8 +41,6 @@ function Login() {
         <>
            <h1>Login</h1> 
            <form onSubmit={(event) => { event.preventDefault() }}>
-                <p>{username}</p>
-                <p>{password}</p>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input value={username} type="text" id="username" name="username" onChange={handleUsernameInput} />
