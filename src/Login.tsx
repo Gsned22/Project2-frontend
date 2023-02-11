@@ -41,6 +41,8 @@ function Login() {
         <>
            <h1>Login</h1> 
            <form onSubmit={(event) => { event.preventDefault() }}>
+                <p>{username}</p>
+                <p>{password}</p>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input value={username} type="text" id="username" name="username" onChange={handleUsernameInput} />
