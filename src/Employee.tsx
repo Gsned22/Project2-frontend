@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReimbursementSubmit from './ReimbursementSubmit';
 
-function User() {
+function Employee() {
 
     const [reimbursements, setReimbursements] = useState<{ 
         reimbursement_id: string, 
@@ -64,4 +64,4 @@ function User() {
     )
 }
 
-export default User;
+export default Employee;

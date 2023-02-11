@@ -29,7 +29,7 @@ function Login() {
             const payload: { iat: number, role: string, username: string } = jwtDecode(token); // extracts the payload of the token
             if (payload.role === 'user') {
                 // redirect to /user route
-                return navigate("/user");
+                return navigate("/users/profile");
             } else if (payload.role === 'guest') {
                 // redirect to /guest route
                 return navigate("/guest");
