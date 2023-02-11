@@ -19,13 +19,12 @@ function Login() {
     }
 
     async function login() {
-        const response = await axios.post('http://127.0.0.1:8080/login', { "username": username, "password": password });
-        if (response.status === 200) {
+        try {
+            const response = await axios.post('http://127.0.0.1:8080/login', { "username": username, "password": password });                  
             const token = response.data.token;
             const message = response.data.message;
             localStorage.setItem('token', token);
             alert(message);
-
             const payload: { iat: number, role: string, username: string } = jwtDecode(token); // extracts the payload of the token
             if (payload.role === 'user') {
                 // redirect to /user route
@@ -33,7 +32,9 @@ function Login() {
             } else if (payload.role === 'guest') {
                 // redirect to /guest route
                 return navigate("/guest");
-            }
+            }   
+        } catch (err) {
+            alert(err);
         }
     }
 
