@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import About from './About';
+import Admin from './Admin';
 import Employee from './Employee';
 import FinanceManager from './FinanceManager';
 import Home from './Home';
@@ -25,6 +26,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users/profile" element={<UserProfile />} />

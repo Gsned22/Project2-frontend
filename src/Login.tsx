@@ -29,9 +29,9 @@ function Login() {
             if (payload.role === 'user') {
                 // redirect to /user route
                 return navigate("/users/profile");
-            } else if (payload.role === 'guest') {
+            } else if (payload.role === 'admin') {
                 // redirect to /guest route
-                return navigate("/guest");
+                return navigate("/admin");
             }   
         } catch (err) {
             alert(err);

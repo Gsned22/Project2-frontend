@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import UpdateProducts from './UpdateProducts';
 
-function Home() {
+function Admin() {
 
     const [books, setBooks] = useState<{
         product_number: string,
         description: string,
         image: string,
         inventory_count: number,
-        price: number,
+        price: number
         product_name: string }[]>([]);
 
     useEffect(() => {
@@ -18,36 +19,6 @@ function Home() {
     async function retrieveBooks() {
         const response = await axios.get('http://127.0.0.1:8080/products');
         setBooks(response.data.Items);
-    }
-
-    async function addToCart(product_number: any) {
-        const response = await axios.post(`http://127.0.0.1:8080/cart`, { "product_number": product_number }, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-
-        if (response.status === 201) {
-            const message = response.data.message;
-            alert(message);
-        }
-
-        retrieveBooks();
-    }
-
-    async function removeFromCart(product_number: any) {
-        const response = await axios.patch(`http://127.0.0.1:8080/cart`, { "product_number": product_number }, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-
-        if (response.status === 201) {
-            const message = response.data.message;
-            alert(message);
-        }
-
-        retrieveBooks(); 
     }
 
     return ( 
@@ -75,19 +46,14 @@ function Home() {
                                 <td>{books.price}</td>
                                 <td>{books.inventory_count}</td>
                                 <td>{books.image}</td>
-                                {books.inventory_count > 0 ? 
-                                <>
-                                    <td><button onClick={() => { addToCart(books.product_number) }}>Add To Cart</button></td>
-                                    <td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td>
-                                </> :
-                                <><td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td></>}
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
+            <UpdateProducts refreshProducts={retrieveBooks} />
         </>
     )
 }
 
-export default Home;
+export default Admin;
