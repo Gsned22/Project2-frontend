@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import About from './About';
 import Admin from './Admin';
+import Cart from './Cart';
 import Employee from './Employee';
 import FinanceManager from './FinanceManager';
 import Home from './Home';
@@ -30,6 +31,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users/profile" element={<UserProfile />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/employee" element={<Employee />} />
         <Route path="/financemanager" element={<FinanceManager />} /> 
       </Routes>
