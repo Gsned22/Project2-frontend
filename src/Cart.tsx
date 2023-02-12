@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { formatCurrency } from './formatCurrency';
 
 function Cart() {
 
@@ -24,6 +25,7 @@ function Cart() {
                     // retrieve that specific employee's reimbursements
                 }
             });
+            console.log(response.data);
             setCart(response.data);
         } catch (err) {
             alert(err);
@@ -64,6 +66,10 @@ function Cart() {
                     <td></td>
                     <td></td>
                     <td>TOTAL</td>
+                    <td>{ formatCurrency(cart.reduce(function (previousValue, currentValue) {
+                            return previousValue + currentValue.quantity * currentValue.price;
+                        }, 0))}
+                    </td>
                 </tr>
             </tbody>
         </table>

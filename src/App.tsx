@@ -3,8 +3,6 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import About from './About';
 import Admin from './Admin';
 import Cart from './Cart';
-import Employee from './Employee';
-import FinanceManager from './FinanceManager';
 import Home from './Home';
 import Login from './Login';
 import UserProfile from './UserProfile';
@@ -32,8 +30,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/users/profile" element={<UserProfile />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/employee" element={<Employee />} />
-        <Route path="/financemanager" element={<FinanceManager />} /> 
       </Routes>
     </BrowserRouter>
   );
