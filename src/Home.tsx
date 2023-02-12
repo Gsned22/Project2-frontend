@@ -52,7 +52,7 @@ function Home() {
 
     return ( 
         <>
-            <h1>Welcome to Alchemy Booksellers</h1>
+            <h1 className='welcome'>Welcome to Alchemy Booksellers</h1>
             <h2>Products</h2>
             <table>
                 <thead>
