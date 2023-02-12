@@ -87,7 +87,7 @@ function Home() {
                                     <td><button onClick={() => { addToCart(books.product_number) }}>Add To Cart</button></td>
                                     <td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td>
                                 </> :
-                                <><td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td></>}
+                                <><td className='outOfStock'>Out of stock</td><td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td></>}
                             </tr>
                         )
                     })}
