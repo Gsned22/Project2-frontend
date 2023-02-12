@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
@@ -10,6 +11,8 @@ function Home() {
         inventory_count: number,
         price: number,
         product_name: string }[]>([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         retrieveBooks();
@@ -50,6 +53,10 @@ function Home() {
         retrieveBooks(); 
     }
 
+    async function viewCart() {  
+        return navigate("/cart");
+    }
+
     return ( 
         <>
             <h1 className='welcome'>Welcome to Alchemy Booksellers</h1>
@@ -86,6 +93,7 @@ function Home() {
                     })}
                 </tbody>
             </table>
+            <button onClick={() => { viewCart() }}>View Cart</button>
         </>
     )
 }
