@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 function Home() {
 
     const [books, setBooks] = useState<{
@@ -18,12 +19,12 @@ function Home() {
     async function retrieveBooks() {
         const response = await axios.get('http://127.0.0.1:8080/products');
         setBooks(response.data.Items);
+        console.log(await axios.get('http://127.0.0.1:8080/covers'));
     }
-    
+
     return ( 
         <>
             <h1>Welcome to Alchemy Booksellers</h1>
-
             <h2>Products</h2>
             <table>
                 <thead>
