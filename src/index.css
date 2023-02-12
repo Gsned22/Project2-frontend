@@ -3,3 +3,17 @@ h1, h2, th {
   font-family: 'Goudy Bookletter 1911', serif;
   color: rgb(255, 166, 0);
 }
+
+.outOfStock {
+    color: rgb(255, 0, 0);
+}
+
+.total {
+    color: rgb(6, 168, 0);
+}
+
+table {
+    border-spacing:10px;
+    border-collapse: separate;
+}
+

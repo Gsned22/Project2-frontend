@@ -65,8 +65,8 @@ function Cart() {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>TOTAL</td>
-                    <td>{ formatCurrency(cart.reduce(function (previousValue, currentValue) {
+                    <td className='total'>TOTAL</td>
+                    <td className='total'>{ formatCurrency(cart.reduce(function (previousValue, currentValue) {
                             return previousValue + currentValue.quantity * currentValue.price;
                         }, 0))}
                     </td>
