@@ -25,7 +25,7 @@ function Admin() {
         <>
             <h1 id='adminUpdates'>Admin Products Update Page</h1>
             <UpdateProducts refreshProducts={retrieveBooks} />
-            <table>
+            <table className='adminTable'>
                 <thead>
                     <tr>
                         <th>Product Number</th>

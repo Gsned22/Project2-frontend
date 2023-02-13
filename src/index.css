@@ -62,10 +62,6 @@ td {
     color:rgb(71, 255, 215)
 }
 
-.productsTable th:nth-child(odd) {
-    color:rgb(71, 255, 215)
-}
-
 .cartTable {
     border-collapse: separate;
     border-spacing: 100px 15px;
@@ -75,7 +71,12 @@ td {
     color:rgb(71, 255, 215)
 }
 
-.cartTable th:nth-child(odd) {
+.adminTable {
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+.adminTable td:nth-child(odd) {
     color:rgb(71, 255, 215)
 }
 
