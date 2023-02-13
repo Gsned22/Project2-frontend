@@ -39,7 +39,7 @@ function Cart() {
   return (
     <>
         <h1>Cart</h1>
-        <table>
+        <table className='cartTable'>
             <thead>
                 <tr>
                     <th>Product Number</th>
@@ -73,7 +73,7 @@ function Cart() {
                 </tr>
             </tbody>
         </table>
-        <button onClick={() => { backToProducts() }}>Return to Products Page</button>
+        <div className='returnToProductsButton'><button onClick={() => { backToProducts() }}>Return to Products Page</button></div>
     </>
     )
 }

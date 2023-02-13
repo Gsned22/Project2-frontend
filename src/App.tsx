@@ -5,24 +5,13 @@ import Admin from './Admin';
 import Cart from './Cart';
 import Home from './Home';
 import Login from './Login';
+import NavBar from './Navbar';
 import UserProfile from './UserProfile';
 
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<Admin />} />

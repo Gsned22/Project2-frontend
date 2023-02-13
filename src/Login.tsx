@@ -39,20 +39,20 @@ function Login() {
     }
 
     return (
-        <>
+        <div className='loginClass'>
            <h1>Login</h1> 
            <form onSubmit={(event) => { event.preventDefault() }}>
-                <div>
-                    <label htmlFor="username">Username</label>
+                <div className='usernameAndPassword'>
+                    <label className='usernameAndPasswordText' htmlFor="username">Username</label>
                     <input value={username} type="text" id="username" name="username" onChange={handleUsernameInput} />
                 </div>
-                <div>
-                    <label htmlFor="password">Password</label>
+                <div className='usernameAndPassword'>
+                    <label className='usernameAndPasswordText' htmlFor="password">Password</label>
                     <input value={password} type="password" id="password" name="password" onChange={handlePasswordInput} />
                 </div>
                 <button onClick={login}>Login</button>
            </form>
-        </>
+        </div>
     )
 }
 

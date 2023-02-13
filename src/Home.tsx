@@ -59,17 +59,18 @@ function Home() {
 
     return ( 
         <>
+            <img className='mainImage' src='booksImage.png' alt='cartoon books'/>
             <h1 className='welcome'>Welcome to Alchemy Booksellers</h1>
-            <h2>Products</h2>
-            <table>
+            <table className='productsTable'>
                 <thead>
                     <tr>
                         <th>Product Number</th>
+                        <th>Cover Art</th>
                         <th>Product Name</th>
                         <th>Description</th>
                         <th>Price</th>
                         <th>Inventory Count</th>
-                        <th>Picture</th>
+                        <th className='viewCartButton' column-span="all"><button onClick={() => { viewCart() }}>View Cart</button></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,23 +78,22 @@ function Home() {
                         return (
                             <tr key={books.product_number}>
                                 <td>{books.product_number}</td>
+                                <td><img className='resize' src={books.image} alt="product"/></td>
                                 <td>{books.product_name}</td>
                                 <td>{books.description}</td>
                                 <td>{books.price}</td>
                                 <td>{books.inventory_count}</td>
-                                <td>{books.image}</td>
                                 {books.inventory_count > 0 ? 
                                 <>
                                     <td><button onClick={() => { addToCart(books.product_number) }}>Add To Cart</button></td>
                                     <td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td>
                                 </> :
-                                <><td className='outOfStock'>Out of stock</td><td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td></>}
+                                <><td id='outOfStock'>Out of stock</td><td><button onClick={() => { removeFromCart(books.product_number) }}>Remove From Cart</button></td></>}
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
-            <button onClick={() => { viewCart() }}>View Cart</button>
         </>
     )
 }

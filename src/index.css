@@ -1,19 +1,114 @@
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
-h1, h2, th {
-  font-family: 'Goudy Bookletter 1911', serif;
-  color: rgb(255, 166, 0);
+
+body {
+    background-color: rgb(10, 84, 153);
 }
 
-.outOfStock {
+.nav-link {
+    color: rgb(255, 255, 255);
+}
+
+.mainImage {
+    width: 30%;
+    height: auto;
+    margin-left: 35vw;
+}
+
+h1 {
+    margin-top: 15px;
+}
+
+h1, h2 {
+    font-family: 'Goudy Bookletter 1911', serif;
+    color: rgb(255, 166, 0);
+    text-align: center;
+    font-weight: bolder;
+}
+
+th {
+    font-family: 'Goudy Bookletter 1911', serif;
+    text-align: center;
+    font-size: 2vw;
+    color: rgb(255, 166, 0);
+}
+
+#outOfStock {
     color: rgb(255, 0, 0);
 }
 
 .total {
     color: rgb(6, 168, 0);
+    font-weight: bolder;
 }
 
-table {
-    border-spacing:10px;
+.resize {
+    width: 40%;
+    height: auto;
+}
+
+td {
+    font-family: 'Goudy Bookletter 1911', serif;
+    font-size: 1.5vw;
+    text-align: center;
+    color: rgb(255, 166, 0);
+    vertical-align: middle;
+}
+
+.productsTable {
     border-collapse: separate;
+    border-spacing: 15px;
 }
 
+.productsTable td:nth-child(odd) {
+    color:rgb(71, 255, 215)
+}
+
+.productsTable th:nth-child(odd) {
+    color:rgb(71, 255, 215)
+}
+
+.cartTable {
+    border-collapse: separate;
+    border-spacing: 100px 15px;
+}
+
+.cartTable td:nth-child(odd) {
+    color:rgb(71, 255, 215)
+}
+
+.cartTable th:nth-child(odd) {
+    color:rgb(71, 255, 215)
+}
+
+button {
+    border-radius: 5px;
+    background-color: #ffbf00;
+}
+
+button:hover {
+    background-color:#002ead;
+    transition: 0.7s;
+}
+
+button:active {
+    background-color: #00ff55;
+}
+
+.returnToProductsButton {
+    text-align: center;
+}
+
+.loginClass {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.usernameAndPassword {
+    font-family: 'Goudy Bookletter 1911', serif;
+    color: rgb(255, 166, 0);
+    margin: 1em;
+}
+
+.usernameAndPasswordText {
+    margin: 1em;
+}
