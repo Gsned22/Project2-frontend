@@ -7,6 +7,7 @@ import Checkout from './Checkout';
 import Home from './Home';
 import Login from './Login';
 import NavBar from './Navbar';
+import Register from './Register';
 import UserProfile from './UserProfile';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />       
         <Route path="/users/profile" element={<UserProfile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />

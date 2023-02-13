@@ -155,7 +155,7 @@ function Register() {
 
         <Container>
             <Wrapper>
-                <Form onSubmit={(event) => {event.preventDefault()}} >
+                <Form onSubmit={(event: any) => {event.preventDefault()}} >
 
                     <InputWrapper>
                         <Label htmlFor='username' >Username</Label>
