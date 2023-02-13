@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import About from './About';
 import Admin from './Admin';
 import Cart from './Cart';
+import Checkout from './Checkout';
 import Home from './Home';
 import Login from './Login';
 import NavBar from './Navbar';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/users/profile" element={<UserProfile />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </BrowserRouter>
   );

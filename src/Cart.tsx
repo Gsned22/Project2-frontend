@@ -35,6 +35,10 @@ function Cart() {
     async function backToProducts() {  
         return navigate("/");
     }
+
+    async function proceedToCheckout() {  
+        return navigate("/checkout");
+    }
     
   return (
     <>
@@ -73,7 +77,9 @@ function Cart() {
                 </tr>
             </tbody>
         </table>
-        <div className='returnToProductsButton'><button onClick={() => { backToProducts() }}>Return to Products Page</button></div>
+        <div className='buttonsOnCartPage'><button className='returnToProductsButton' onClick={() => { backToProducts() }}>Return to Products Page</button>
+            <button className='proceedToCheckoutButton' onClick={() => { proceedToCheckout() }}>Proceed To Checkout Page</button>
+        </div>
     </>
     )
 }

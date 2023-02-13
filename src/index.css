@@ -116,3 +116,28 @@ button:active {
     color: rgb(255, 255, 255);
     margin-left: .75vw;
 }
+
+.buttonsOnCartPage {
+    text-align: center;
+}
+
+.returnToProductsButton {
+    margin: 10px;
+}
+
+.proceedToCheckoutButton {
+    margin: 10px;
+}
+
+.buttonsOnCheckoutPage {
+    text-align: center;
+}
+
+.returnToCartButton {
+    margin: 10px;
+}
+
+.purchaseItemsButton {
+    margin: 10px;
+}
+
