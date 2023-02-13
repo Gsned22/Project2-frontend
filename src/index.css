@@ -32,7 +32,7 @@ th {
     color: rgb(255, 166, 0);
 }
 
-#outOfStock {
+#outOfStock, #adminUpdates {
     color: rgb(255, 0, 0);
 }
 
@@ -47,7 +47,6 @@ th {
 }
 
 td {
-    font-family: 'Goudy Bookletter 1911', serif;
     font-size: 1.5vw;
     text-align: center;
     color: rgb(255, 166, 0);
@@ -104,11 +103,15 @@ button:active {
 }
 
 .usernameAndPassword {
-    font-family: 'Goudy Bookletter 1911', serif;
     color: rgb(255, 166, 0);
     margin: 1em;
 }
 
 .usernameAndPasswordText {
     margin: 1em;
+}
+
+.productUpdates {
+    color: rgb(255, 255, 255);
+    margin-left: .75vw;
 }
