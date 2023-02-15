@@ -8,7 +8,7 @@ import Home from './Home';
 import Login from './Login';
 import NavBar from './Navbar';
 import Register from './Register';
-import UserProfile from './UserProfile';
+import CustomerProfile from './CustomerProfile';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />       
-        <Route path="/users/profile" element={<UserProfile />} />
+        <Route path="/customer/profile" element={<CustomerProfile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
