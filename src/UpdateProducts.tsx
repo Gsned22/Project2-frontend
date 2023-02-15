@@ -35,7 +35,7 @@ function UpdateProducts(props: { refreshProducts: () => void }) {
                 <input onChange={(e) => { setInventory_Count(Number(e.target.value)) }} value={inventory_count} type="number" id="inventory_count" name="inventory_count" />
                 <label className='productUpdates' htmlFor="price">Price</label>
                 <input onChange={(e) => { setPrice(Number(e.target.value)) }} value={price} type="number" id="price" name="price" />
-
+                
                 <button onClick={addProduct}>Submit</button>
             </form>
         </>

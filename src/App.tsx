@@ -9,6 +9,7 @@ import Login from './Login';
 import NavBar from './Navbar';
 import Register from './Register';
 import CustomerProfile from './CustomerProfile';
+import Confirmation from './Confirmation';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/customer/profile" element={<CustomerProfile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
     </BrowserRouter>
   );
