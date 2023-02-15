@@ -94,6 +94,7 @@ function Home() {
                     })}
                 </tbody>
             </table>
+            <div className='attribution'>Image by rawpixel.com</div>
         </>
     )
 }
