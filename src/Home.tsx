@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Home() {
 
     const [books, setBooks] = useState<{
         product_number: string,
-        description: string,
         image: string,
         inventory_count: number,
         price: number,
@@ -67,7 +66,6 @@ function Home() {
                         <th>Product Number</th>
                         <th>Cover Art</th>
                         <th>Product Name</th>
-                        <th>Description</th>
                         <th>Price</th>
                         <th>Inventory Count</th>
                         <th className='viewCartButton' column-span="all"><button onClick={() => { viewCart() }}>View Cart</button></th>
@@ -79,8 +77,7 @@ function Home() {
                             <tr key={books.product_number}>
                                 <td>{books.product_number}</td>
                                 <td><img className='resize' src={books.image} alt="product"/></td>
-                                <td>{books.product_name}</td>
-                                <td>{books.description}</td>
+                                <td><Link className='linkToDetailsPage' to={`/products/${books.product_number}`}>{books.product_name}</Link></td>
                                 <td>{books.price}</td>
                                 <td>{books.inventory_count}</td>
                                 {books.inventory_count > 0 ? 

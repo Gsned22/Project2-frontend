@@ -67,8 +67,8 @@ function Register() {
                         <Input value={city} type='text' id='city' name='city' onChange={(e) => { setCity(e.currentTarget.value) }} />
                         <Label htmlFor='state' >State</Label>
                         <Input value={state} type='text' id='state' name='state' onChange={(e) => { setState(e.currentTarget.value) }} />
-                        <Label htmlFor='zip_code' >Zip Code</Label>
-                        <Input value={zipcode1} type='number' id='zip_code' name='zip_code' onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} />
+                        <Label htmlFor='zip_code1' >Zip Code</Label>
+                        <Input value={zipcode1} type='number' id='zip_code1' name='zip_code1' onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} />
                     </InputWrapper>
                     <InputWrapper>
                         <Label htmlFor='credit_card_number' >Credit Card Number</Label>
@@ -77,8 +77,8 @@ function Register() {
                         <Input value={expiration} type='number' id='expiration' name='expiration' onChange={(e) => { setExpiration(Number(e.currentTarget.value)) }} />
                         <Label htmlFor='security_code' >Security Code</Label>
                         <Input value={security_code} type='number' id='security_code' name='security_code' onChange={(e) => { setSecurityCode(Number(e.currentTarget.value)) }} />
-                        <Label htmlFor='zip_code' >Zip Code</Label>
-                        <Input value={zipcode2} type='number' id='zip_code' name='zip_code' onChange={(e) => { setZipcode2(Number(e.currentTarget.value)) }} />
+                        <Label htmlFor='zip_code2' >Zip Code</Label>
+                        <Input value={zipcode2} type='number' id='zip_code2' name='zip_code2' onChange={(e) => { setZipcode2(Number(e.currentTarget.value)) }} />
                     </InputWrapper>
                     <InputWrapper>
                         <Label htmlFor='email' >Email</Label>
