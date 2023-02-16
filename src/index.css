@@ -64,26 +64,14 @@ td {
     border-spacing: 15px;
 }
 
-.productsTable td:nth-child(odd) {
-    color:rgb(71, 255, 215)
-}
-
 .cartTable {
     border-collapse: separate;
     border-spacing: 100px 15px;
 }
 
-.cartTable td:nth-child(odd) {
-    color:rgb(71, 255, 215)
-}
-
 .adminTable {
     border-collapse: separate;
     border-spacing: 15px;
-}
-
-.adminTable td:nth-child(odd) {
-    color:rgb(71, 255, 215)
 }
 
 button {
@@ -170,3 +158,24 @@ button:active {
 .goToUserProfileButton {
     margin: 10px;
 }
+
+p {
+    color:rgb(71, 255, 215);
+    text-align: center;
+}
+
+.linkToDetailsPage:link {
+    color: rgb(255, 166, 0);
+  }
+  
+.linkToDetailsPage:visited {
+    color: rgb(255, 94, 0);
+  }
+  
+.linkToDetailsPage:hover {
+    color:#dc4eff;
+  }
+  
+.linkToDetailsPage:active {
+    color: #00ff55;
+  }
