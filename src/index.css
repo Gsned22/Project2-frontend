@@ -159,4 +159,14 @@ button:active {
     color: rgb(255, 166, 0);
 }
 
+.buttonsOnConfirmationPage {
+    text-align: center;
+}
 
+.returnToProductsButton {
+    margin: 10px;
+}
+
+.goToUserProfileButton {
+    margin: 10px;
+}
