@@ -12,7 +12,7 @@ function Checkout() {
     const [expiration, setExpiration] = useState(0);
     const [card_number, setCard_Number] = useState(0);
     const [security_code, setSecurity_Code] = useState(0);
-    const [zipcode2, setZipcode2] = useState('');
+    const [zipcode2, setZipcode2] = useState(0);
 
     const navigate = useNavigate();
 
@@ -59,7 +59,7 @@ function Checkout() {
                 <label className='placeOrderLabel' htmlFor="security_code">Security Code</label>
                 <input className='placeOrderInput' onChange={(e) => { setSecurity_Code(Number(e.currentTarget.value)) }} value={security_code} type="number" id="security_code" name="security_code" /><br />
                 <label className='placeOrderLabel' htmlFor="zipcode2">Zip Code</label>
-                <input className='placeOrderInput' onChange={(e) => { setZipcode2(e.currentTarget.value) }} value={zipcode2} type="text" id="zipcode2" name="zipcode2" /><br />
+                <input className='placeOrderInput' onChange={(e) => { setZipcode2(Number(e.currentTarget.value)) }} value={zipcode2} type="number" id="zipcode2" name="zipcode2" /><br />
                 <div className='buttonsOnCheckoutPage'>
                     <button className='returnToCartButton' onClick={() => { backToCart() }}>Return to Your Cart</button>
                     <button className='purchaseItemsButton' onClick={() => { submitPurchase() }}>Submit Purchase</button>
