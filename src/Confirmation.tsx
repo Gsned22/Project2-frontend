@@ -18,8 +18,8 @@ function Confirmation() {
     <>
         <h1>Thank you for your order!</h1>
         <div className='buttonsOnConfirmationPage'>
-                    <button className='returnToProductsButton' onClick={() => { returnToProducts() }}>Shop More</button>
-                    <button className='goToUserProfileButton' onClick={() => { goToUserProfile() }}>Go to Your User Profile</button>
+            <button className='returnToProductsButton' onClick={() => { returnToProducts() }}>Shop More</button>
+            <button className='goToUserProfileButton' onClick={() => { goToUserProfile() }}>Go to Your User Profile</button>
         </div>
     </>
     )

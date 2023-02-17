@@ -75,12 +75,12 @@ td {
 }
 
 button {
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: #ffbf00;
 }
 
 button:hover {
-    background-color:#002ead;
+    background-color:#308aff;
     transition: 0.7s;
 }
 

@@ -25,10 +25,9 @@ function Cart() {
                     // retrieve that specific employee's reimbursements
                 }
             });
-            console.log(response.data);
             setCart(response.data);
-        } catch (err) {
-            alert(err);
+        } catch (err: any) {
+            alert(err.response.data.message);
         }
     }
 
@@ -77,9 +76,15 @@ function Cart() {
                 </tr>
             </tbody>
         </table>
-        <div className='buttonsOnCartPage'><button className='returnToProductsButton' onClick={() => { backToProducts() }}>Return to Products Page</button>
-            <button className='proceedToCheckoutButton' onClick={() => { proceedToCheckout() }}>Proceed To Checkout Page</button>
-        </div>
+                        { cart.reduce(function (previousValue, currentValue) {
+                            return previousValue + currentValue.quantity * currentValue.price;
+                        }, 0) > 0 ? 
+            <>
+                <div className='buttonsOnCartPage'><button className='returnToProductsButton' onClick={() => { backToProducts() }}>Return to Products Page</button>
+                    <button className='proceedToCheckoutButton' onClick={() => { proceedToCheckout() }}>Proceed To Checkout Page</button>
+                </div>
+            </> :
+                <><div className='buttonsOnCartPage'><button className='returnToProductsButton' onClick={() => { backToProducts() }}>Return to Products Page</button></div></>}
     </>
     )
 }
