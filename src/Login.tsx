@@ -33,8 +33,9 @@ function Login() {
                 // redirect to /guest route
                 return navigate("/admin");
             }   
-        } catch (err) {
-            alert(err);
+        } catch (err: any) {
+            alert(err.response.data.message);
+            console.log(err.response.data.message);
         }
     }
 
