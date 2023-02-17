@@ -47,16 +47,16 @@ function Register() {
             <Wrapper>
                 <Form onSubmit={(event: any) => {event.preventDefault()}} >
                     <InputWrapper>
-                        <Label htmlFor='password' >Full Name</Label>
+                        <Label htmlFor='full_name' >Full Name</Label>
                         <Input value={full_name} type='text' id='full_name' name='full_name' required onChange={(e) => { setFullName(e.currentTarget.value) }} />
-                        <Label htmlFor='address' >Street Address</Label>
+                        <Label htmlFor='street_address' >Street Address</Label>
                         <Input value={street_address} type='text' id='street_address' required name='street_address' onChange={(e) => { setStreetAddress(e.currentTarget.value) }} />
                         <Label htmlFor='city' >City</Label>
                         <Input value={city} type='text' id='city' name='city' required onChange={(e) => { setCity(e.currentTarget.value) }} />
                         <Label htmlFor='state' >State</Label>
                         <Input value={state} type='text' id='state' name='state' required onChange={(e) => { setState(e.currentTarget.value) }} />
-                        <Label htmlFor='zip_code1' >Zip Code</Label>
-                        <Input value={zipcode1} type='number' id='zip_code1' name='zip_code1' required onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} />
+                        <Label htmlFor='zipcode1' >Zip Code</Label>
+                        <Input value={zipcode1} type='number' id='zipcode1' name='zipcode1' required onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} />
                     </InputWrapper>
                     <InputWrapper>
                         <Label htmlFor='email' >Email</Label>

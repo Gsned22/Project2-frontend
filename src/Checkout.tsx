@@ -1,5 +1,4 @@
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -11,9 +10,9 @@ function Checkout() {
     const [state, setState] = useState('');
     const [zipcode1, setZipcode1] = useState(0);
     const [expiration, setExpiration] = useState(0);
-    const [last4digits, setLast4Digits] = useState(0);
+    const [card_number, setCard_Number] = useState(0);
     const [security_code, setSecurity_Code] = useState(0);
-    const [zipcode2, setZipcode2] = useState(0);
+    const [zipcode2, setZipcode2] = useState('');
 
     const navigate = useNavigate();
 
@@ -24,15 +23,16 @@ function Checkout() {
     async function submitPurchase() {
         try {
             const response = await axios.post('http://127.0.0.1:8080/orders', { "full_name": full_name, "street_address": street_address, "city": city, "state": state, "zipcode1": zipcode1,
-                "expiration": expiration, "last4digits": last4digits, "security_code": security_code, "zipcode2": zipcode2 }, {
+                "expiration": expiration, "card_number": card_number, "security_code": security_code, "zipcode2": zipcode2 }, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`                    }
             } );
             const message = response.data.message;
             alert(message);
             return navigate("/confirmation");
-        } catch (err) {
-            alert(err);
+        } catch (err: any) {
+            console.log(err.response.data.message);
+            //alert(err.response.data.message);
         }
     }
 
@@ -54,12 +54,12 @@ function Checkout() {
                 <h2>Please enter your credit card info below:</h2>
                 <label className='placeOrderLabel' htmlFor="expiration">Expiration</label>
                 <input className='placeOrderInput' onChange={(e) => { setExpiration(Number(e.currentTarget.value)) }} value={expiration} type="number" id="expiration" name="expiration" /><br />                
-                <label className='placeOrderLabel' htmlFor="last4digits">Last 4 Digits</label>
-                <input className='placeOrderInput' onChange={(e) => { setLast4Digits(Number(e.currentTarget.value)) }} value={last4digits} type="number" id="last4digits" name="last4digits" /><br />
+                <label className='placeOrderLabel' htmlFor="card_number">Credit Card Number</label>
+                <input className='placeOrderInput' onChange={(e) => { setCard_Number(Number(e.currentTarget.value)) }} value={card_number} type="number" id="card_number" name="card_number" /><br />
                 <label className='placeOrderLabel' htmlFor="security_code">Security Code</label>
                 <input className='placeOrderInput' onChange={(e) => { setSecurity_Code(Number(e.currentTarget.value)) }} value={security_code} type="number" id="security_code" name="security_code" /><br />
                 <label className='placeOrderLabel' htmlFor="zipcode2">Zip Code</label>
-                <input className='placeOrderInput' onChange={(e) => { setZipcode2(Number(e.currentTarget.value)) }} value={zipcode2} type="number" id="zipcode2" name="zipcode2" /><br />
+                <input className='placeOrderInput' onChange={(e) => { setZipcode2(e.currentTarget.value) }} value={zipcode2} type="text" id="zipcode2" name="zipcode2" /><br />
                 <div className='buttonsOnCheckoutPage'>
                     <button className='returnToCartButton' onClick={() => { backToCart() }}>Return to Your Cart</button>
                     <button className='purchaseItemsButton' onClick={() => { submitPurchase() }}>Submit Purchase</button>
