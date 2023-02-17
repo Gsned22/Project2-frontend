@@ -35,7 +35,6 @@ function Login() {
             }   
         } catch (err: any) {
             alert(err.response.data.message);
-            console.log(err.response.data.message);
         }
     }
 
