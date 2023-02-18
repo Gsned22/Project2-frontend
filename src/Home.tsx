@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
+import { formatCurrency } from './formatCurrency';
 
 function Home() {
 
@@ -67,10 +68,8 @@ function Home() {
             <h1 className='welcome'>Welcome to Alchemy Booksellers</h1>
             <table className='productsTable'>
                 <thead>
-                    <tr>
-                        <th>Product Number</th>
+                    <tr><th>Product Name</th>
                         <th>Cover Art</th>
-                        <th>Product Name</th>
                         <th>Price</th>
                         <th>Inventory Count</th>
                         <th>
@@ -97,14 +96,12 @@ function Home() {
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    {books.map((books) => {
+                <tbody>{books.map((books) => {
                         return (
                             <tr key={books.product_number}>
-                                <td>{books.product_number}</td>
-                                <td><img className='resize' src={books.image} alt="product"/></td>
                                 <td><Link className='linkToDetailsPage' to={`/products/${books.product_number}`}>{books.product_name}</Link></td>
-                                <td>{books.price}</td>
+                                <td><img className='resize' src={books.image} alt="product"/></td>
+                                <td>{formatCurrency(books.price)}</td>
                                 <td>{books.inventory_count}</td>
                                 {books.inventory_count > 0 ? 
                                 <>

@@ -24,7 +24,7 @@ h1 {
     margin-top: 15px;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: 'Goudy Bookletter 1911', serif;
     color: rgb(255, 166, 0);
     text-align: center;
@@ -47,16 +47,16 @@ th {
     font-weight: bolder;
 }
 
-.resize {
-    width: 40%;
-    height: auto;
-}
-
 td {
     font-size: 1.5vw;
     text-align: center;
     color: rgb(255, 166, 0);
     vertical-align: middle;
+}
+
+.resize {
+    width: 40%;
+    height: auto;
 }
 
 .productsTable {
@@ -148,6 +148,10 @@ button:active {
 }
 
 .buttonsOnConfirmationPage {
+    text-align: center;
+}
+
+.buttonOnDetailsPage {
     text-align: center;
 }
 
