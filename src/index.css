@@ -147,23 +147,11 @@ button:active {
     color: rgb(255, 166, 0);
 }
 
-.buttonsOnConfirmationPage {
+.buttonsOnConfirmationPage, .buttonOnDetailsPage, .buttonsOnOrdersPage {
     text-align: center;
 }
 
-.buttonOnDetailsPage {
-    text-align: center;
-}
-
-.buttonsOnOrdersPage {
-    text-align: center;
-}
-
-.returnToProductsButton {
-    margin: 10px;
-}
-
-.goToUserProfileButton {
+.returnToProductsButton, .updateProductsButton, .goToUserProfileButton {
     margin: 10px;
 }
 
@@ -202,3 +190,4 @@ p {
     border-width: 3px;
     border-color: orange;
 }
+
