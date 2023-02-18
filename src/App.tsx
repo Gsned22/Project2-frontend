@@ -11,6 +11,7 @@ import Register from './Register';
 import CustomerProfile from './CustomerProfile';
 import Confirmation from './Confirmation';
 import ProductDetails from './ProductDetails';
+import ReviewOrders from './ReviewOrders';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/products/:product_number" element={<ProductDetails />} />
+        <Route path="/orders/:username" element={<ReviewOrders />} />
       </Routes>
     </BrowserRouter>
   );
