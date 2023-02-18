@@ -14,11 +14,17 @@ body {
     margin-left: 35vw;
 }
 
+.aboutImage {
+    width: 30%;
+    height: auto;
+    margin-left: 35vw;  
+}
+
 h1 {
     margin-top: 15px;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
     font-family: 'Goudy Bookletter 1911', serif;
     color: rgb(255, 166, 0);
     text-align: center;
@@ -41,11 +47,6 @@ th {
     font-weight: bolder;
 }
 
-.resize {
-    width: 40%;
-    height: auto;
-}
-
 td {
     font-size: 1.5vw;
     text-align: center;
@@ -53,13 +54,14 @@ td {
     vertical-align: middle;
 }
 
+.resize {
+    width: 40%;
+    height: auto;
+}
+
 .productsTable {
     border-collapse: separate;
     border-spacing: 15px;
-}
-
-.productsTable td:nth-child(odd) {
-    color:rgb(71, 255, 215)
 }
 
 .cartTable {
@@ -67,26 +69,18 @@ td {
     border-spacing: 100px 15px;
 }
 
-.cartTable td:nth-child(odd) {
-    color:rgb(71, 255, 215)
-}
-
 .adminTable {
     border-collapse: separate;
     border-spacing: 15px;
 }
 
-.adminTable td:nth-child(odd) {
-    color:rgb(71, 255, 215)
-}
-
 button {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #ffbf00;
 }
 
 button:hover {
-    background-color:#002ead;
+    background-color:#308aff;
     transition: 0.7s;
 }
 
@@ -100,7 +94,6 @@ button:active {
 
 .loginClass {
     text-align: center;
-    vertical-align: middle;
 }
 
 .usernameAndPassword {
@@ -129,10 +122,6 @@ button:active {
     margin: 10px;
 }
 
-.buttonsOnCheckoutPage {
-    text-align: center;
-}
-
 .returnToCartButton {
     margin: 10px;
 }
@@ -140,6 +129,7 @@ button:active {
 .purchaseItemsButton {
     margin: 10px;
 }
+
 
 /* customer profile page CSS*/
 
@@ -210,3 +200,66 @@ body1 {
     padding-top: 1rem;
     float: right;
 }
+=======
+.aboutText {
+    color: rgb(255, 166, 0);
+}
+
+.attribution {
+    color: rgb(255, 255, 255);
+}
+
+#formContainer {
+    text-align: center;
+}
+
+.placeOrderLabel {
+    margin: 1em;
+    color: rgb(255, 166, 0);
+}
+
+.buttonsOnConfirmationPage, .buttonOnDetailsPage, .buttonsOnOrdersPage {
+    text-align: center;
+}
+
+.returnToProductsButton, .updateProductsButton, .goToUserProfileButton {
+    margin: 10px;
+}
+
+p {
+    color:rgb(71, 255, 215);
+    text-align: center;
+}
+
+.linkToDetailsPage:link {
+    color: rgb(255, 166, 0);
+  }
+  
+.linkToDetailsPage:visited {
+    color: #00ff55;
+  }
+  
+.linkToDetailsPage:hover {
+    color:#dc4eff;
+  }
+  
+.linkToDetailsPage:active {
+    color: #00ff55;
+  }
+
+.ordersData {
+    color:rgb(71, 255, 215);
+}
+
+.ordersTable {
+    margin: 1em;
+    border: 5px;
+    border-color: orange;
+}
+
+.ordersData {
+    border-width: 3px;
+    border-color: orange;
+}
+
+

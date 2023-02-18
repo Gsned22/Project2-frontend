@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UpdateProducts from './UpdateProducts';
+import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 function Admin() {
 
@@ -12,19 +14,29 @@ function Admin() {
         price: number
         product_name: string }[]>([]);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
-        retrieveBooks();
+        retrieveBooksAdmin();
     }, [])
 
-    async function retrieveBooks() {
+    async function retrieveBooksAdmin() {
         const response = await axios.get('http://127.0.0.1:8080/products');
-        setBooks(response.data.Items);
+        let token = localStorage.getItem('token') || '{}';
+        const payload: { iat: number, role: string, username: string } = jwtDecode(token);
+        if (payload.role === 'admin') {
+            setBooks(response.data.Items);
+        } else {
+            return navigate("/");
+        }
     }
 
     return ( 
         <>
             <h1 id='adminUpdates'>Admin Products Update Page</h1>
-            <UpdateProducts refreshProducts={retrieveBooks} />
+            <h4>If adding a new product, leave Product Number blank and it will be randomly assigned.</h4>
+            <h4>If updating existing product info, include the Product Number along with any fields you wish to update.</h4>
+            <UpdateProducts refreshProducts={retrieveBooksAdmin} />
             <table className='adminTable'>
                 <thead>
                     <tr>
