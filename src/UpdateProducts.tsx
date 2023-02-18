@@ -12,7 +12,7 @@ function UpdateProducts(props: { refreshProducts: () => void }) {
     const [inventory_count, setInventory_Count] = useState(0);
     const [price, setPrice] = useState(0);
 
-    async function addProduct() {
+    async function updateOrAddProduct() {
         try {
             const response = await axios.post('http://127.0.0.1:8080/products', { "product_number": product_number, "description": description, "image": image, "inventory_count": inventory_count, "product_name": product_name, "price": price }, {
             });
@@ -45,7 +45,7 @@ function UpdateProducts(props: { refreshProducts: () => void }) {
                 <Input onChange={(e) => { setPrice(Number(e.target.value)) }} value={price} type="number" id="price" name="price" />
                 </InputWrapper>
                 <ButtonWrapper>               
-                    <button onClick={addProduct}>Submit</button>
+                    <button onClick={updateOrAddProduct}>Submit</button>
                 </ButtonWrapper>               
                 </Form>
             </Wrapper>

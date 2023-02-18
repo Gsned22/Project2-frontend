@@ -36,8 +36,7 @@ function ReviewOrders() {
         try {
             const response = await axios.get(`http://127.0.0.1:8080${location.pathname}`, {
                 headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}` // send employee token, so it will only
-                    // retrieve that specific employee's reimbursements
+                    "Authorization": `Bearer ${localStorage.getItem('token')}` 
                 }
             });
             setOrders(response.data);
