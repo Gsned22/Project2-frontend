@@ -155,6 +155,10 @@ button:active {
     text-align: center;
 }
 
+.buttonsOnOrdersPage {
+    text-align: center;
+}
+
 .returnToProductsButton {
     margin: 10px;
 }
@@ -183,3 +187,18 @@ p {
 .linkToDetailsPage:active {
     color: #00ff55;
   }
+
+.ordersData {
+    color:rgb(71, 255, 215);
+}
+
+.ordersTable {
+    margin: 1em;
+    border: 5px;
+    border-color: orange;
+}
+
+.ordersData {
+    border-width: 3px;
+    border-color: orange;
+}
