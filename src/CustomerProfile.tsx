@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Token } from 'aws-sdk';
 
 function CustomerProfile() {
-    const [customerProfile, setCustomerProfile] = useState<{
-        username: string,
-        address:{
-            street_address: string,
-            city: string,
-            state: string,
-            zipcode1: number}
-        credit_card_info:{
-            expiration: number,
-            last4digits: number,
-            security_code: number,
-            zipcode2: number},
-        email: string,
-        full_name: string,
-        password: string,
-        phone_number: number,
-        profile_picture: string,
-        role: string
-    }>([] as any);
     
+    const [username, setUsername] = useState('');
+    const [street_address, setStreetAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zipcode1, setZipcode1] = useState(0);
+    const [email, setEmail] = useState('');
+    const [full_name, setFullName] = useState('');
+    const [profile_picture, setProfilePicture] = useState('');
+    const [password, setPassword] = useState();
+    const [phone_number, setPhoneNumber] = useState(0);
+    const [last4digits, setLast4digits] = useState(0);
+    const [expiration, setExpiration] = useState(0);
+    const [security_code, setSecurityCode ] = useState(0);
+    const [zipcode2, setZipcode2] = useState(0);
     
     useEffect(() => {
         retrieveCustomerProfile();
@@ -34,47 +30,33 @@ function CustomerProfile() {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
 
             }
-
         });
-
-        setCustomerProfile(response.data);
-        console.log(response.data);
+        
+        setUsername(response.data.username)
+        setStreetAddress(response.data.address.street_address)
+        setCity(response.data.address.city)
+        setState(response.data.address.state)
+        setZipcode1(response.data.address.zipcode1)
+        setEmail(response.data.email)
+        setFullName(response.data.full_name)
+        setProfilePicture(response.data.profile_picture)
+        setPassword(response.data.password)
+        setPhoneNumber(response.data.phone_number)
+        setLast4digits(response.data.credit_card_info.last4digits)
+        setExpiration(response.data.credit_card_info.expiration)
+        setSecurityCode(response.data.credit_card_info.security_code)
+        setZipcode2(response.data.credit_card_info.zipcode2)
+        
+        // setCustomerProfile(response.data);
+        // console.log(response.data);
       
     }
-    const city1 = (customerProfile.username)
-    console.log(city1)
 
-    async function updateUserProfile() {
-        try {
 
-            const response = await axios.patch('http://127.0.0.1:8080/customer/profile', {
-                'username': customerProfile.username,
-                'street_address': customerProfile.address.street_address,
-                'city': customerProfile.address.city, 
-                'state': customerProfile.address.state, 
-                'zipcode1': customerProfile.address.zipcode1,
-                'expiration': customerProfile.credit_card_info.expiration,
-                'last4digits': customerProfile.credit_card_info.last4digits,
-                'security_code': customerProfile.credit_card_info.security_code,
-                'zipcode2': customerProfile.credit_card_info.zipcode2,
-                'email': customerProfile.email, 
-                'full_name': customerProfile.full_name, 
-                'profile_picture': customerProfile.profile_picture,
-                'password': customerProfile.password, 
-                'phone_number': customerProfile.phone_number
-
-            });
-
-            if (response.status === 200) {
-
-                const message = response.data.message;
-                console.log(response);
-                alert(message);
-            }
-        } catch (err: any) {
-            alert(err.response.data.message);
-        }
+    function handleEditInput(event: React.FormEvent<HTMLInputElement>) {
+        setUsername(event.currentTarget.value);
     }
+   
    
 
     return (
@@ -83,14 +65,14 @@ function CustomerProfile() {
                 <div className="row gutters">
                     <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                         <div className="card h-100">
-                            <div className="card-body1">
+                            <div className="card-body" id="profilePage">
                                 <div className="account-settings">
                                     <div className="user-profile">
                                         <div className="user-avatar">
                                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin" /> 
                                         </div>
-                                        <h5 className="user-name">{customerProfile.username}</h5>
-                                        <h6 className="user-email">{customerProfile.email}</h6>
+                                        <h5 className="user-name">{username}</h5>
+                                        <h6 className="user-email">{email}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -106,25 +88,25 @@ function CustomerProfile() {
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="fullName">Full Name</label>
-                                            <input type="text" className="form-control" id="fullName" value ={customerProfile.full_name} />
+                                            <input type="text" className="form-control" id="fullName" value ={full_name} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="eMail">Email</label>
-                                            <input type="email" className="form-control" id="eMail" value ={customerProfile.email} />
+                                            <input type="email" className="form-control" id="eMail" value ={email} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="phone">Phone Number</label>
-                                            <input type="number" className="form-control" id="phone" value = {customerProfile.phone_number}/>
+                                            <input type="number" className="form-control" id="phone" value = {phone_number}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="website">Profile Picture URL</label>
-                                            <input type="url" className="form-control" id="website" value = {customerProfile.profile_picture} />
+                                            <input type="url" className="form-control" id="website" value = {profile_picture} />
                                         </div>
                                     </div>
                                 </div>
@@ -135,25 +117,25 @@ function CustomerProfile() {
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="Street">Street Adress</label>
-                                            <input type="name" className="form-control" id="Street" value = {customerProfile.address.street_address} />
+                                            <input type="name" className="form-control" id="Street" value = {street_address} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="ciTy">City</label>
-                                            <input type="name" className="form-control" id="ciTy" value={customerProfile.address.city} />
+                                            <input type="name" className="form-control" id="ciTy" value={city} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="sTate">State</label>
-                                            <input type="text" className="form-control" id="sTate" value ={customerProfile.address.state}/>
+                                            <input type="text" className="form-control" id="sTate" value ={state}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="zIp">Zip Code</label>
-                                            <input type="text" className="form-control" id="zIp" value ={customerProfile.address.zipcode1} />
+                                            <input type="text" className="form-control" id="zIp" value ={zipcode1} />
                                         </div>
                                     </div>
                                 </div>
@@ -164,25 +146,25 @@ function CustomerProfile() {
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="last4digits">Last 4 digits of credit card</label>
-                                            <input type="name" className="form-control" id="last4digits" value = {customerProfile.credit_card_info.last4digits} />
+                                            <input type="name" className="form-control" id="last4digits" value = {last4digits} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="expiration">Expiration Date</label>
-                                            <input type="name" className="form-control" id="expiration" value = {customerProfile.credit_card_info.expiration} />
+                                            <input type="name" className="form-control" id="expiration" value = {expiration} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="securityCode">Security Code</label>
-                                            <input type="text" className="form-control" id="securityCode" value = {customerProfile.credit_card_info.security_code} />
+                                            <input type="text" className="form-control" id="securityCode" value = {security_code} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="zIpCode">Zip Code</label>
-                                            <input type="text" className="form-control" id="zIpCode" value = {customerProfile.credit_card_info.zipcode2} />
+                                            <input type="text" className="form-control" id="zIpCode" value = {zipcode2} />
                                         </div>
                                     </div>
                                 </div>
