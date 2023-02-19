@@ -58,9 +58,9 @@ function Cart() {
                         <tr key={cart.product_number}>
                             <td>{cart.product_number}</td>
                             <td>{cart.product_name}</td>
-                            <td>{cart.price}</td>
+                            <td>{formatCurrency(cart.price)}</td>
                             <td>{cart.quantity}</td>
-                            <td>{cart.price * cart.quantity}</td>
+                            <td>{formatCurrency(cart.price * cart.quantity)}</td>
                         </tr>                  
                     )
                 })}
