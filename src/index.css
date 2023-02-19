@@ -133,11 +133,11 @@ button:active {
 
 /* customer profile page CSS*/
 
-body1 {
+#profilePage {
     margin: 0;
     padding-top: 40px;
     color: #2e323c;
-    background: #f5f6fa;
+    background: #ffbf00;
     position: relative;
     height: 100%;
 }
@@ -200,7 +200,7 @@ body1 {
     padding-top: 1rem;
     float: right;
 }
-=======
+
 .aboutText {
     color: rgb(255, 166, 0);
 }
