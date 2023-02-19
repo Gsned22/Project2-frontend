@@ -9,9 +9,12 @@ import Login from './Login';
 import NavBar from './Navbar';
 import Register from './Register';
 import CustomerProfile from './CustomerProfile';
+import ResetPassword from './Reset-Password';
+import NewPassword from './New-Password'
 import Confirmation from './Confirmation';
 import ProductDetails from './ProductDetails';
 import ReviewOrders from './ReviewOrders';
+
 
 function App() {
   return (
@@ -26,6 +29,8 @@ function App() {
         <Route path="/customer/profile" element={<CustomerProfile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path='/reset/password' element={<ResetPassword/>}/>
+        <Route path= '/new/password' element={<NewPassword/>}/>
         <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/products/:product_number" element={<ProductDetails />} />
         <Route path="/orders/:username" element={<ReviewOrders />} />

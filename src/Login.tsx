@@ -38,6 +38,10 @@ function Login() {
         }
     }
 
+    async function resetPassword(){
+        return navigate("/reset/password")
+    }
+
     return (
         <div className='loginClass'>
            <h1>Login</h1> 
@@ -51,6 +55,7 @@ function Login() {
                     <input value={password} type="password" id="password" name="password" onChange={handlePasswordInput} />
                 </div>
                 <button onClick={login}>Login</button>
+                <button onClick={() => { resetPassword() }}>Reset Password</button>
            </form>
         </div>
     )
