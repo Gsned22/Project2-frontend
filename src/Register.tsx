@@ -14,6 +14,7 @@ function Register() {
     const [full_name, setFullName] = useState('');
     const [profile_picture, setProfilePicture] = useState('');
     const [password, setPassword] = useState('');
+    const [confirm_password, setConfirmPassword] = useState('');
     const [phone_number, setPhoneNumber] = useState(0);
     const navigate = useNavigate();
     
@@ -25,13 +26,12 @@ function Register() {
                 'street_address': street_address,
                 'city': city, 'state': state, 'zipcode1': zipcode1,
                 'email': email, 'full_name': full_name, 'profile_picture': profile_picture,
-                'password': password, 'phone_number': phone_number
+                'password': password, 'confirm_password': confirm_password, 'phone_number': phone_number
             });
 
             if (response.status === 200) {
 
                 const message = response.data.message;
-                console.log(response);
                 alert(message);
                 return navigate('/login')
             }
@@ -49,6 +49,10 @@ function Register() {
                     <InputWrapper>
                         <Label htmlFor='full_name' >Full Name</Label>
                         <Input value={full_name} type='text' id='full_name' name='full_name' required onChange={(e) => { setFullName(e.currentTarget.value) }} />
+                    </InputWrapper>
+                    <InputWrapper>
+                        <Label htmlFor='email' >Email</Label>
+                        <Input value={email} type='text' id='email' name='email' required onChange={(e) => { setEmail(e.currentTarget.value) }} />
                         <Label htmlFor='street_address' >Street Address</Label>
                         <Input value={street_address} type='text' id='street_address' required name='street_address' onChange={(e) => { setStreetAddress(e.currentTarget.value) }} />
                         <Label htmlFor='city' >City</Label>
@@ -59,12 +63,12 @@ function Register() {
                         <Input value={zipcode1} type='number' id='zipcode1' name='zipcode1' required onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} />
                     </InputWrapper>
                     <InputWrapper>
-                        <Label htmlFor='email' >Email</Label>
-                        <Input value={email} type='text' id='email' name='email' required onChange={(e) => { setEmail(e.currentTarget.value) }} />
                         <Label htmlFor='username' >Username</Label>
                         <Input value={username} type='text' id='username' name='username' required onChange={(e) => { setUsername(e.currentTarget.value) }} />
                         <Label htmlFor='password' >Password</Label>
                         <Input value={password} type='password' id='password' name='password' required onChange={(e) => { setPassword(e.currentTarget.value) }} />
+                        <Label htmlFor='confirm_password' >Confirm Password</Label>
+                        <Input value={confirm_password} type='password' id='confirm_password' name='confirm_password' required onChange={(e) => { setConfirmPassword(e.currentTarget.value) }} />               
                         <Label htmlFor='profile_picture' >Profile Picture</Label>
                         <Input value={profile_picture} type='text' id='profile_picture' name='profile_picture' placeholder='Enter Optional Photo URL' onChange={(e) => { setProfilePicture(e.currentTarget.value) }} />
                         <Label htmlFor='phone_number' >Telephone</Label>
