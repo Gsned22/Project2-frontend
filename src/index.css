@@ -43,14 +43,14 @@ th {
 }
 
 .total {
-    color: rgb(6, 168, 0);
+    color:rgb(71, 255, 215);
     font-weight: bolder;
 }
 
 td {
     font-size: 1.5vw;
     text-align: center;
-    color: rgb(255, 166, 0);
+    color:rgb(71, 255, 215);
     vertical-align: middle;
 }
 
@@ -97,7 +97,7 @@ button:active {
 }
 
 .usernameAndPassword {
-    color: rgb(255, 166, 0);
+    color:rgb(71, 255, 215);
     margin: 1em;
 }
 
@@ -136,15 +136,6 @@ button:active {
 
 .attribution {
     color: rgb(255, 255, 255);
-}
-
-#formContainer {
-    text-align: center;
-}
-
-.placeOrderLabel {
-    margin: 1em;
-    color: rgb(255, 166, 0);
 }
 
 .buttonsOnConfirmationPage, .buttonOnDetailsPage, .buttonsOnOrdersPage {

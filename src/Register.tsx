@@ -41,7 +41,8 @@ function Register() {
     }
  
     return (
-
+        <>
+        <h1>Register</h1>
         <Container>
             <Wrapper>
                 <Form onSubmit={(event: any) => {event.preventDefault()}} >
@@ -75,30 +76,29 @@ function Register() {
                 </Form>
             </Wrapper>
         </Container>
+        </>
     )
 }
 
 export default Register;
 
 const Container = styled.div`
-height: 100vh;
+height: 30vh;
 width: 100vw;
 text-align: center;
 display: flex;
 justify-content: center;
 align-items: center;
-border: 1px;
 
 `
 const Wrapper = styled.div`
 display: flex;
-padding: 50px;
+padding: 70px;
 max-height: 400px;
 border-radius: 20px;
 align-items: center;
 flex-direction: column;
-border: 1px;
-margin-top: -200px;
+margin-top: -140px;
     
 `
 
@@ -106,7 +106,7 @@ const Form = styled.form`
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 5rem;
+padding: 6rem;
     
 `
 
@@ -120,7 +120,7 @@ justify-content: center;
 
 const Label = styled.label`
 display: flex;
-color: rgb(255, 166, 0);
+color:rgb(71, 255, 215);
 margin-left: 10px;
 `
 
