@@ -207,6 +207,7 @@ button:active {
 
 .attribution {
     color: rgb(255, 255, 255);
+    text-align: center;
 }
 
 .buttonsOnConfirmationPage, .buttonOnDetailsPage, .buttonsOnOrdersPage {

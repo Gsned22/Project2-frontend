@@ -30,7 +30,7 @@ function ResetPassword() {
 
     return (
         <div className='loginClass'>
-           <h1>Reset Pasword</h1> 
+           <h1>Reset Password</h1> 
            <form onSubmit={(event) => { event.preventDefault() }}>
                 <div className='usernameAndPassword'>
                     <label className='usernameAndPasswordText' htmlFor="username">Email</label>

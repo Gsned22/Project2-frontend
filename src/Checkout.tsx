@@ -52,7 +52,7 @@ function Checkout() {
                     <Input className='placeOrderInput' onChange={(e) => { setFull_Name(e.currentTarget.value) }} value={full_name} type="text" id="full_name" name="full_name" /><br />
                 </InputWrapper>
                 <InputWrapper>
-                     <h4>Please enter your address below:</h4>
+                     <h4>Please enter<br/>your address<br/>below:</h4>
                     <Label className='placeOrderLabel' htmlFor="street_address">Street Address</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setStreet_Address(e.currentTarget.value) }} value={street_address} type="text" id="street_address" name="street_address" /><br />            
                     <Label className='placeOrderLabel' htmlFor="city">City</Label>
@@ -63,7 +63,7 @@ function Checkout() {
                     <Input className='placeOrderInput' onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} value={zipcode1} type="number" id="zipcode1" name="zipcode1" /><br />
                 </InputWrapper>
                 <InputWrapper>                
-                    <h4>Please enter your credit card info below:</h4>
+                    <h4>Please enter<br/>your credit card<br/>info below:</h4>
                     <Label className='placeOrderLabel' htmlFor="card_number">Credit Card Number</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setCard_Number(Number(e.currentTarget.value)) }} value={card_number} type="number" id="card_number" name="card_number" /><br />
                     <Label className='placeOrderLabel' htmlFor="expiration">Expiration</Label>
