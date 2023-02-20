@@ -14,7 +14,7 @@ function CustomerProfile() {
     const [profile_picture, setProfilePicture] = useState('');
     const [password, setPassword] = useState();
     const [phone_number, setPhoneNumber] = useState(0);
-    const [last4digits, setLast4digits] = useState(0);
+    const [card_number, setCardNumber] = useState(0);
     const [expiration, setExpiration] = useState(0);
     const [security_code, setSecurityCode ] = useState(0);
     const [zipcode2, setZipcode2] = useState(0);
@@ -41,7 +41,7 @@ function CustomerProfile() {
         setProfilePicture(response.data.profile_picture)
         setPassword(response.data.password)
         setPhoneNumber(response.data.phone_number)
-        setLast4digits(response.data.credit_card_info.last4digits)
+        setCardNumber(response.data.credit_card_info.card_number)
         setExpiration(response.data.credit_card_info.expiration)
         setSecurityCode(response.data.credit_card_info.security_code)
         setZipcode2(response.data.credit_card_info.zipcode2)
@@ -148,8 +148,8 @@ function CustomerProfile() {
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
-                                            <label htmlFor="last4digits">Last 4 digits of credit card</label>
-                                            <input type="name" className="form-control" id="last4digits" value = {last4digits} />
+                                            <label htmlFor="card_number">Credit Card Number</label>
+                                            <input type="name" className="form-control" id="card_number" value = {card_number} />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">

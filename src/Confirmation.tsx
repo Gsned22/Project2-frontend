@@ -11,7 +11,14 @@ function Confirmation() {
     }
 
     function goToUserProfile() {  
-        return navigate("/customer/profile");
+        let token = localStorage.getItem('token') || '{}';
+        const payload: { iat: number, role: string, username: string } = jwtDecode(token);  
+        if (payload.role === 'user') {
+            return navigate("/customer/profile");
+        } else {
+            alert('As a guest, you have no profile.')
+            return navigate("/");
+        }
     }
 
     function reviewPriorOrders() {  

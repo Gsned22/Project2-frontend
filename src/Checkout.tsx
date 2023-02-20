@@ -26,7 +26,7 @@ function Checkout() {
             const response = await axios.post('http://127.0.0.1:8080/orders', { "full_name": full_name, "street_address": street_address, "city": city, "state": state, "zipcode1": zipcode1,
                 "expiration": expiration, "card_number": card_number, "security_code": security_code, "zipcode2": zipcode2 }, {
                     headers: {
-                        "Authorization": `Bearer ${localStorage.getItem('token')}`                    }
+                        "Authorization": `Bearer ${localStorage.getItem('token')}` }
             } );
             const message = response.data.message;
             alert(message);
@@ -52,9 +52,7 @@ function Checkout() {
                     <Input className='placeOrderInput' onChange={(e) => { setFull_Name(e.currentTarget.value) }} value={full_name} type="text" id="full_name" name="full_name" /><br />
                 </InputWrapper>
                 <InputWrapper>
-                    <div className='placeOrder'>
                      <h4>Please enter your address below:</h4>
-                     </div>
                     <Label className='placeOrderLabel' htmlFor="street_address">Street Address</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setStreet_Address(e.currentTarget.value) }} value={street_address} type="text" id="street_address" name="street_address" /><br />            
                     <Label className='placeOrderLabel' htmlFor="city">City</Label>
@@ -66,10 +64,10 @@ function Checkout() {
                 </InputWrapper>
                 <InputWrapper>                
                     <h4>Please enter your credit card info below:</h4>
-                    <Label className='placeOrderLabel' htmlFor="expiration">Expiration</Label>
-                    <Input className='placeOrderInput' onChange={(e) => { setExpiration(Number(e.currentTarget.value)) }} value={expiration} type="number" id="expiration" name="expiration" /><br />                
                     <Label className='placeOrderLabel' htmlFor="card_number">Credit Card Number</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setCard_Number(Number(e.currentTarget.value)) }} value={card_number} type="number" id="card_number" name="card_number" /><br />
+                    <Label className='placeOrderLabel' htmlFor="expiration">Expiration</Label>
+                    <Input className='placeOrderInput' onChange={(e) => { setExpiration(Number(e.currentTarget.value)) }} value={expiration} type="number" id="expiration" name="expiration" /><br />                
                     <Label className='placeOrderLabel' htmlFor="security_code">Security Code</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setSecurity_Code(Number(e.currentTarget.value)) }} value={security_code} type="number" id="security_code" name="security_code" /><br />
                     <Label className='placeOrderLabel' htmlFor="zipcode2">Zip Code</Label>
@@ -102,7 +100,7 @@ display: flex;
 padding: 70px;
 max-height: 400px;
 border-radius: 20px;
-align-items: center;
+align-items: top;
 flex-direction: column;
 margin-top: -140px;
     
@@ -119,7 +117,7 @@ padding: 6rem;
 const InputWrapper = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: top;
   
 
 `

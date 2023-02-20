@@ -254,6 +254,9 @@ p {
 }
 
 .placeOrder {
-    margin-top: 2.6vw;
+    margin-top: 1.6vw;
 }
 
+.purchaseFullName {
+    margin-top: 2vw;
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import { formatCurrency } from './formatCurrency';
+import jwtDecode from 'jwt-decode';
 
 function Home() {
 
@@ -25,7 +26,7 @@ function Home() {
     }
 
     async function addToCart(product_number: any) {
-        try {
+       // try {
             if (!localStorage.getItem('token')) {
                 return navigate('/login');
             } else {
@@ -48,9 +49,9 @@ function Home() {
                 }
             }
             retrieveBooks();
-        } catch (err: any) {
+       /* } catch (err: any) {
             alert(err.response.data.message);
-        }
+        }*/
     }
 
     async function removeFromCart(product_number: any) {

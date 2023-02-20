@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Token } from 'aws-sdk';
 import jwtDecode from 'jwt-decode';
 
 function EditCustomerProfile() {
@@ -152,8 +151,8 @@ function EditCustomerProfile() {
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
-                                            <label htmlFor="last4digits">Last 4 digits of credit card</label>
-                                            <input type="name" className="form-control" id="last4digits" defaultValue  = {card_number} onChange={(e) => { setCardNumber(Number(e.target.value))}}/>
+                                            <label htmlFor="card_number">Credit Card Number</label>
+                                            <input type="name" className="form-control" id="card_number" defaultValue  = {card_number} onChange={(e) => { setCardNumber(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">

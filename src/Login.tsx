@@ -38,6 +38,10 @@ function Login() {
         }
     }
 
+    async function goToRegister() {
+        return navigate("/register")
+    }
+
     async function resetPassword(){
         return navigate("/reset/password")
     }
@@ -46,14 +50,34 @@ function Login() {
         try {
             const response = await axios.get('http://127.0.0.1:8080/login');                  
             const token = response.data.token;
-            const message = response.data.message;
             localStorage.setItem('token', token);
-            alert(message);
+            //const payload: { iat: number, role: string, username: string } = jwtDecode(token);
+
+            /*if (payload.role === 'guest') {
+                assignCartToGuest();
+            }*/
             return navigate("/");
         } catch (err: any) {
             alert(err.response.data.message);
         }
     }
+
+    /*async function assignCartToGuest() {
+        try {
+            const response = await axios.put('http://127.0.0.1:8080/cart', {}, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            if (response.status === 201) {
+                const message = response.data.message;
+                alert(message);
+                return navigate("/");
+            }
+        } catch (err: any) {
+            alert(err.response.data.message);
+        }
+    }*/
 
     return (
         <div className='loginClass'>
@@ -67,9 +91,10 @@ function Login() {
                     <label className='usernameAndPasswordText' htmlFor="password">Password</label>
                     <input value={password} type="password" id="password" name="password" onChange={handlePasswordInput} />
                 </div>
-                <button onClick={login}>Login</button>
-                <button onClick={() => { resetPassword() }}>Reset Password</button>
+                <button onClick={() => { goToRegister() }}>Register</button>
+                <button onClick={() => { resetPassword() }}>Reset Password</button><br />
                 <button onClick={() => { continueAsGuest() }}>Continue as Guest</button>
+                <button onClick={login}>Login</button>
            </form>
         </div>
     )
