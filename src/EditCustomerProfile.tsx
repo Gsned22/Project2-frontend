@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Token } from 'aws-sdk';
+import jwtDecode from 'jwt-decode';
 
-function CustomerProfile() {
-    
+function EditCustomerProfile() {
+
     const [username, setUsername] = useState('');
     const [street_address, setStreetAddress] = useState('');
     const [city, setCity] = useState('');
@@ -12,59 +14,61 @@ function CustomerProfile() {
     const [email, setEmail] = useState('');
     const [full_name, setFullName] = useState('');
     const [profile_picture, setProfilePicture] = useState('');
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
     const [phone_number, setPhoneNumber] = useState(0);
-    const [last4digits, setLast4digits] = useState(0);
+    const [card_number, setCardNumber] = useState(0);
     const [expiration, setExpiration] = useState(0);
-    const [security_code, setSecurityCode ] = useState(0);
+    const [security_code, setSecurityCode] = useState(0);
     const [zipcode2, setZipcode2] = useState(0);
-    
-    useEffect(() => {
-        retrieveCustomerProfile();
-    }, [])
+    const navigate = useNavigate();
 
-    async function retrieveCustomerProfile() {
-        const response = await axios.get('http://127.0.0.1:8080/customer/profile', {
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
-
+    // useEffect(() => {
+    //     retrieveCustomerProfile();
+    // }, [])
+    async function updateProfile() {
+        try {
+            const response = await axios.patch(`http://127.0.0.1:8080/update/profile`,
+                {
+                    "username": username,
+                    'street_address': street_address,
+                    'city': city,
+                    'state': state,
+                    'zipcode1': zipcode1,
+                    'expiration': expiration,
+                    'card_number': card_number,
+                    'security_code': security_code,
+                    'zipcode2': zipcode2,
+                    'email': email,
+                    'full_name': full_name,
+                    'profile_picture': profile_picture,
+                    'password': password,
+                    'phone_number': phone_number
+                },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    }
+                }
+            );
+                console.log(Headers);
+            if (response.status === 200) {
+                const message = response.data.message;
+                console.log(response);
+                alert(message);
+                return navigate('/customer/profile')
             }
-        });
-        
-        setUsername(response.data.username)
-        setStreetAddress(response.data.address.street_address)
-        setCity(response.data.address.city)
-        setState(response.data.address.state)
-        setZipcode1(response.data.address.zipcode1)
-        setEmail(response.data.email)
-        setFullName(response.data.full_name)
-        setProfilePicture(response.data.profile_picture)
-        setPassword(response.data.password)
-        setPhoneNumber(response.data.phone_number)
-        setLast4digits(response.data.credit_card_info.last4digits)
-        setExpiration(response.data.credit_card_info.expiration)
-        setSecurityCode(response.data.credit_card_info.security_code)
-        setZipcode2(response.data.credit_card_info.zipcode2)
-        
-        // setCustomerProfile(response.data);
-        // console.log(response.data);
-      
+        } catch (err: any) {
+            alert(err.response.data.message);
+        }
     }
 
 
 
-        let navigate = useNavigate(); 
-        const routeChange = () =>{ 
-          let path = `/edit/profile`; 
-          navigate(path);
-        }
-        
-   
-   
+
 
     return (
         <>
-            <div className="container">
+           <div className="container">
                 <div className="row gutters">
                     <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                         <div className="card h-100">
@@ -91,25 +95,25 @@ function CustomerProfile() {
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="fullName">Full Name</label>
-                                            <input type="text" className="form-control" id="fullName" value ={full_name}/>
+                                            <input type="text" className="form-control" id="fullName" defaultValue ={full_name} onChange={(e) => { setFullName(e.target.value)}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="eMail">Email</label>
-                                            <input type="email" className="form-control" id="eMail" value ={email} />
+                                            <input type="email" className="form-control" id="eMail" defaultValue ={email} onChange={(e) => { setEmail(e.target.value)}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="phone">Phone Number</label>
-                                            <input type="number" className="form-control" id="phone" value = {phone_number}/>
+                                            <input type="number" className="form-control" id="phone" defaultValue = {phone_number} onChange={(e) => { setPhoneNumber(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="website">Password</label>
-                                            <input type="text" className="form-control" id="website" value = {password} />
+                                            <input type="text" className="form-control" id="website" defaultValue = {password} onChange={(e) => { setPassword(e.target.value)}} />
                                         </div>
                                     </div>
                                 </div>
@@ -120,25 +124,25 @@ function CustomerProfile() {
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="Street">Street Adress</label>
-                                            <input type="name" className="form-control" id="Street" value = {street_address} />
+                                            <input type="name" className="form-control" id="Street" defaultValue = {street_address} onChange={(e) => { setStreetAddress(e.target.value)}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="ciTy">City</label>
-                                            <input type="name" className="form-control" id="ciTy" value={city} />
+                                            <input type="name" className="form-control" id="ciTy" defaultValue ={city} onChange={(e) => { setCity(e.target.value)}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="sTate">State</label>
-                                            <input type="text" className="form-control" id="sTate" value ={state}/>
+                                            <input type="text" className="form-control" id="sTate" defaultValue  ={state} onChange={(e) => { setState(e.target.value)}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="zIp">Zip Code</label>
-                                            <input type="text" className="form-control" id="zIp" value ={zipcode1} />
+                                            <input type="text" className="form-control" id="zIp" defaultValue  ={zipcode1} onChange={(e) => { setZipcode1(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                 </div>
@@ -149,25 +153,25 @@ function CustomerProfile() {
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="last4digits">Last 4 digits of credit card</label>
-                                            <input type="name" className="form-control" id="last4digits" value = {last4digits} />
+                                            <input type="name" className="form-control" id="last4digits" defaultValue  = {card_number} onChange={(e) => { setCardNumber(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="expiration">Expiration Date</label>
-                                            <input type="name" className="form-control" id="expiration" value = {expiration} />
+                                            <input type="name" className="form-control" id="expiration" defaultValue  = {expiration} onChange={(e) => { setExpiration(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="securityCode">Security Code</label>
-                                            <input type="text" className="form-control" id="securityCode" value = {security_code} />
+                                            <input type="text" className="form-control" id="securityCode" defaultValue  = {security_code} onChange={(e) => { setSecurityCode(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
                                             <label htmlFor="zIpCode">Zip Code</label>
-                                            <input type="text" className="form-control" id="zIpCode" value = {zipcode2} />
+                                            <input type="text" className="form-control" id="zIpCode" defaultValue = {zipcode2} onChange={(e) => { setZipcode2(Number(e.target.value))}}/>
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +179,7 @@ function CustomerProfile() {
                                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div className="text-right">
                                             {/* <button type="button" id="submit" name="submit" className="btn btn-secondary">Cancel</button> */}
-                                            <button type="submit" id="submit" name="submit" className="btn btn-primary" onClick={routeChange} >Edit</button>
+                                            <button type="submit" id="submit" name="submit" className="btn btn-primary" onClick={updateProfile} >Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -188,4 +192,4 @@ function CustomerProfile() {
     )
 }
 
-export default CustomerProfile;
+export default EditCustomerProfile;

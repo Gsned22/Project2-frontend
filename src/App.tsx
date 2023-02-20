@@ -14,6 +14,7 @@ import NewPassword from './New-Password'
 import Confirmation from './Confirmation';
 import ProductDetails from './ProductDetails';
 import ReviewOrders from './ReviewOrders';
+import EditCustomerProfile from './EditCustomerProfile';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/products/:product_number" element={<ProductDetails />} />
         <Route path="/orders/:username" element={<ReviewOrders />} />
+        <Route path="/edit/profile" element={<EditCustomerProfile/>}/>
       </Routes>
     </BrowserRouter>
   );
