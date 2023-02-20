@@ -30,6 +30,10 @@ function Checkout() {
             } );
             const message = response.data.message;
             alert(message);
+            if (localStorage.getItem('x')) {
+                let x = 0; 
+                localStorage.setItem('x', x.toString());
+            }
             return navigate("/confirmation");
         } catch (err: any) {
             alert(err.response.data.message);
@@ -38,17 +42,19 @@ function Checkout() {
 
     return (
         <>
-        <h1>Please Enter Your Information And Click Submit Purchase</h1>
+        <h3>Please Enter Your Information And Click Submit Purchase</h3>
         <Container>
             <Wrapper>
                 <Form onSubmit={(event) => { event.preventDefault() }}>
                 <InputWrapper>
-                    <h2>Please Enter Your Full Name Here</h2>
+                    <h4>Please Enter Your Full Name Here</h4>
                     <Label className='placeOrderLabel' htmlFor="full_name">Full Name</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setFull_Name(e.currentTarget.value) }} value={full_name} type="text" id="full_name" name="full_name" /><br />
                 </InputWrapper>
                 <InputWrapper>
-                     <h2>Please enter your address below:</h2>
+                    <div className='placeOrder'>
+                     <h4>Please enter your address below:</h4>
+                     </div>
                     <Label className='placeOrderLabel' htmlFor="street_address">Street Address</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setStreet_Address(e.currentTarget.value) }} value={street_address} type="text" id="street_address" name="street_address" /><br />            
                     <Label className='placeOrderLabel' htmlFor="city">City</Label>
@@ -59,7 +65,7 @@ function Checkout() {
                     <Input className='placeOrderInput' onChange={(e) => { setZipcode1(Number(e.currentTarget.value)) }} value={zipcode1} type="number" id="zipcode1" name="zipcode1" /><br />
                 </InputWrapper>
                 <InputWrapper>                
-                <h2>Please enter your credit card info below:</h2>
+                    <h4>Please enter your credit card info below:</h4>
                     <Label className='placeOrderLabel' htmlFor="expiration">Expiration</Label>
                     <Input className='placeOrderInput' onChange={(e) => { setExpiration(Number(e.currentTarget.value)) }} value={expiration} type="number" id="expiration" name="expiration" /><br />                
                     <Label className='placeOrderLabel' htmlFor="card_number">Credit Card Number</Label>

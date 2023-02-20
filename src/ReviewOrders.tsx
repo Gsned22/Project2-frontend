@@ -47,6 +47,11 @@ function ReviewOrders() {
     return (
         <>
             <h1>Previous Orders</h1>
+            <h1>Thank you for your orders!</h1>
+                <div className='buttonsOnOrdersPage'>
+                    <button className='returnToProductsButton' onClick={() => { returnToProducts() }}>Shop More</button>
+                    <button className='goToUserProfileButton' onClick={() => { goToUserProfile() }}>Go to Your Customer Profile</button>
+                </div>
             <table className='ordersTable'>
                 <thead>
                     <tr>
@@ -63,10 +68,10 @@ function ReviewOrders() {
                                 <td className='ordersData'>{orders.items.map((innerMap) => {
                                     return (
                                         <tr key={innerMap.product_number}>
-                                            <td>product #{innerMap.product_number},</td>
-                                            <td>&nbsp;{innerMap.product_name},&nbsp;</td>
-                                            <td>{formatCurrency(innerMap.price)}&nbsp;</td>
-                                            <td>x {innerMap.quantity}</td>
+                                            <td><pre>product #{innerMap.product_number},</pre></td>
+                                            <td><pre>{innerMap.product_name}, </pre></td>
+                                            <td><pre>{formatCurrency(innerMap.price)} </pre></td>
+                                            <td><pre>x {innerMap.quantity}</pre></td>
                                         </tr>
                                     )
                                 })}</td>
@@ -77,11 +82,6 @@ function ReviewOrders() {
                     })}
                 </tbody>
             </table>
-            <h1>Thank you for your orders!</h1>
-                <div className='buttonsOnOrdersPage'>
-                    <button className='returnToProductsButton' onClick={() => { returnToProducts() }}>Shop More</button>
-                    <button className='goToUserProfileButton' onClick={() => { goToUserProfile() }}>Go to Your Customer Profile</button>
-                </div>
         </>
     )
 }

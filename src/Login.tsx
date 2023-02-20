@@ -42,6 +42,19 @@ function Login() {
         return navigate("/reset/password")
     }
 
+    async function continueAsGuest() {
+        try {
+            const response = await axios.get('http://127.0.0.1:8080/login');                  
+            const token = response.data.token;
+            const message = response.data.message;
+            localStorage.setItem('token', token);
+            alert(message);
+            return navigate("/");
+        } catch (err: any) {
+            alert(err.response.data.message);
+        }
+    }
+
     return (
         <div className='loginClass'>
            <h1>Login</h1> 
@@ -56,6 +69,7 @@ function Login() {
                 </div>
                 <button onClick={login}>Login</button>
                 <button onClick={() => { resetPassword() }}>Reset Password</button>
+                <button onClick={() => { continueAsGuest() }}>Continue as Guest</button>
            </form>
         </div>
     )

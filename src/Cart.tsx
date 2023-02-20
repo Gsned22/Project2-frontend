@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { formatCurrency } from './formatCurrency';
@@ -21,8 +22,8 @@ function Cart() {
         try {
             const response = await axios.get('http://127.0.0.1:8080/cart', {
                 headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}` // send employee token, so it will only
-                    // retrieve that specific employee's reimbursements
+                    "Authorization": `Bearer ${localStorage.getItem('token')}` // send user's token, so it will only
+                    // retrieve that specific user's cart
                 }
             });
             setCart(response.data);

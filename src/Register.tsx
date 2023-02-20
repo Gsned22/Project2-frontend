@@ -16,6 +16,10 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confirm_password, setConfirmPassword] = useState('');
     const [phone_number, setPhoneNumber] = useState(0);
+    const [card_number, setCardNumber] = useState(0);
+    const [expiration, setExpiration] = useState(0);
+    const [security_code, setSecurityCode] = useState(0);
+    const [zipcode2, setZipcode2] = useState(0);
     const navigate = useNavigate();
     
     async function newRegister() {
@@ -26,7 +30,10 @@ function Register() {
                 'street_address': street_address,
                 'city': city, 'state': state, 'zipcode1': zipcode1,
                 'email': email, 'full_name': full_name, 'profile_picture': profile_picture,
-                'password': password, 'confirm_password': confirm_password, 'phone_number': phone_number
+                'password': password, 'confirm_password': confirm_password, 'phone_number': phone_number,
+                'card_number': card_number, 'expiration': expiration,
+                'security_code': security_code,
+                'zipcode2': zipcode2, 
             });
 
             if (response.status === 200) {
@@ -73,6 +80,16 @@ function Register() {
                         <Input value={profile_picture} type='text' id='profile_picture' name='profile_picture' placeholder='Enter Optional Photo URL' onChange={(e) => { setProfilePicture(e.currentTarget.value) }} />
                         <Label htmlFor='phone_number' >Telephone</Label>
                         <Input value={phone_number} type='number' id='phone_number' name='phone_number' onChange={(e) => { setPhoneNumber(Number(e.currentTarget.value)) }} />
+                    </InputWrapper>
+                    <InputWrapper>
+                        <Label htmlFor='card_number' >Credit Card Number</Label>
+                        <Input value={card_number} type='number' id='card_number' name='card_number' onChange={(e) => { setCardNumber(Number(e.currentTarget.value)) }} />
+                        <Label htmlFor='expiration' >Expiration</Label>
+                        <Input value={expiration} type='number' id='expiration' name='expiration' onChange={(e) => { setExpiration(Number(e.currentTarget.value)) }} />
+                        <Label htmlFor='security_code' >Security Code</Label>
+                        <Input value={security_code} type='number' id='security_code' name='security_code' onChange={(e) => { setSecurityCode(Number(e.currentTarget.value)) }} />
+                        <Label htmlFor='zip_code2' >Zip Code</Label>
+                        <Input value={zipcode2} type='number' id='zip_code2' name='zip_code2' onChange={(e) => { setZipcode2(Number(e.currentTarget.value)) }} />
                     </InputWrapper>
                     <ButtonWrapper>
                         <button type='submit' onClick={newRegister} >Register</button>

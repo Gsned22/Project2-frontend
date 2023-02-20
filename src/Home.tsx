@@ -13,10 +13,8 @@ function Home() {
         price: number,
         product_name: string }[]>([]);
 
-    const [count, setCount] = useState(0);
-
     const navigate = useNavigate();
-
+        
     useEffect(() => {
         retrieveBooks();
     }, [])
@@ -27,39 +25,70 @@ function Home() {
     }
 
     async function addToCart(product_number: any) {
-        const response = await axios.post(`http://127.0.0.1:8080/cart`, { "product_number": product_number }, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+        try {
+            if (!localStorage.getItem('token')) {
+                return navigate('/login');
+            } else {
+                const response = await axios.post(`http://127.0.0.1:8080/cart`, { "product_number": product_number }, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                if (response.status === 201) {
+                    const message = response.data.message;
+                    alert(message);
+                    if (localStorage.getItem('x')) {
+                        let x = Number(localStorage.getItem('x'));
+                        x += 1;
+                        localStorage.setItem('x', x.toString());
+                    } else {
+                        let x = 1; 
+                        localStorage.setItem('x', x.toString());
+                    }
+                }
             }
-        })
-
-        if (response.status === 201) {
-            setCount(count + 1);
-            const message = response.data.message;
-            alert(message);
+            retrieveBooks();
+        } catch (err: any) {
+            alert(err.response.data.message);
         }
-
-        retrieveBooks();
     }
 
     async function removeFromCart(product_number: any) {
-        const response = await axios.patch(`http://127.0.0.1:8080/cart`, { "product_number": product_number }, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+        try {
+            if (!localStorage.getItem('token')) {
+                return navigate('/login');
+            } else {
+                const response = await axios.patch(`http://127.0.0.1:8080/cart`, { "product_number": product_number }, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+        
+                if (response.status === 201) {
+                    const message = response.data.message;
+                    alert(message);
+                    if (localStorage.getItem('x')) {
+                        let x = Number(localStorage.getItem('x'));
+                        x -= 1;
+                        localStorage.setItem('x', x.toString());
+                    } else {
+                        let x = 0; 
+                        localStorage.setItem('x', x.toString());
+                    }
+                }
             }
-        })
-
-        if (response.status === 201) {
-            setCount(count - 1);
-            const message = response.data.message;
-            alert(message);
+            retrieveBooks(); 
+        } catch (err: any) {
+            alert(err.response.data.message);
         }
-
-        retrieveBooks(); 
     }
 
     async function viewCart() {  
-        return navigate("/cart");
+        if (!localStorage.getItem('token')) {
+            return navigate('/login');
+        } else {
+            return navigate("/cart");  
+        }
     }
 
     return ( 
@@ -91,7 +120,7 @@ function Home() {
                                     position: 'absolute',
                                     bottom: 0,
                                     right: 0,
-                                    transform: 'translate(25%, 25%)'}}>{count}
+                                    transform: 'translate(25%, 25%)'}}>{localStorage.getItem('x') ? localStorage.getItem('x'): 0}
                         </div></Button></div>
                         </th>
                     </tr>
