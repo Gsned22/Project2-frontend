@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { formatCurrency } from './formatCurrency';
@@ -24,7 +25,14 @@ function ReviewOrders() {
     }
 
     function goToUserProfile() {  
-        return navigate("/customer/profile");
+        let token = localStorage.getItem('token') || '{}';
+        const payload: { iat: number, role: string, username: string } = jwtDecode(token);  
+        if (payload.role === 'user') {
+            return navigate("/customer/profile");
+        } else {
+            alert('As a guest, you have no profile.')
+            return navigate("/");
+        }
     }
 
     useEffect(() => {
